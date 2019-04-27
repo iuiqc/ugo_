@@ -1,0 +1,32 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: goods-page
+  thymeleaf:
+    cache: false
+
+  rabbitmq:
+    host: yun
+    username: ugo
+    password: ugo
+    virtual-host: /ugo
+    template:
+      exchange: ugo.item.exchange #缺省的交换机名称，此处配置后，发送消息如果不指定交换机就会使用这个
+    publisher-confirms: true  #生产者确认机制，确保消息会正确发送，如果发送失败会有错误回执，从而触发重试
+
+ly:
+  thymeleaf:
+    destPath: D:/nginx/html/item
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://yun:8761/eureka,http://yun:8762/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5 # 每隔5秒发送一次心跳
+    lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}.${server.port}

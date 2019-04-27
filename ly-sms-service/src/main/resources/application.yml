@@ -1,0 +1,18 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: sms-service
+
+  rabbitmq:
+    host: yun
+    username: ugo
+    password: ugo
+    virtual-host: /ugo
+
+ly:
+  sms:
+    accessKeyId: LTAIQ3u9clgBEgqz # 你自己的accessKeyId
+    accessKeySecret: vVh9t0C7MinrUz730Ju3Ub3PX3JSKU # 你自己的AccessKeySecret
+    signName: iu商城 # 签名名称
+    verifyCodeTemplate: SMS_163057336 # 模板名称

@@ -1,0 +1,51 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: item-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/hm
+    username: root
+    password: root
+#    tomcat:
+#      max-active: 1000
+#      initial-size: 100
+#      max-wait: 600000
+#      min-idle: 500
+#      time-between-eviction-runs-millis: 60000
+#      min-evictable-idle-time-millis: 300000
+#    tomcat:
+#      max-active: 1000
+#      initial-size: 100
+#      max-wait: 600000
+#      min-idle: 500
+#      time-between-eviction-runs-millis: 60000
+#      min-evictable-idle-time-millis: 300000
+  rabbitmq:
+      host: yun
+      username: ugo
+      password: ugo
+      virtual-host: /ugo
+      template:
+        retry:
+          enabled: true
+          initial-interval: 10000ms
+          max-interval: 300000ms
+          multiplier: 2
+        exchange: ly.item.exchange
+      publisher-confirms: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://yun:8761/eureka,http://yun:8762/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5 # 每隔5秒发送一次心跳
+    lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}

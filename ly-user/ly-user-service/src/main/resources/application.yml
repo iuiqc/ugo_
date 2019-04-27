@@ -1,0 +1,45 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/hm
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+#    tomcat:
+#      max-active: 1000
+#      initial-size: 100
+#      max-wait: 600000
+#      min-idle: 500
+#      time-between-eviction-runs-millis: 60000
+#      min-evictable-idle-time-millis: 300000
+  redis:
+    host: yun
+  rabbitmq:
+    host: yun
+    username: ugo
+    password: ugo
+    virtual-host: /ugo
+    template:
+      retry:
+        enabled: true
+        initial-interval: 10000ms
+        max-interval: 210000ms
+        multiplier: 2
+    publisher-confirms: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://yun:8761/eureka,http://yun:8762/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${eureka.instance.ip-address}.${server.port}
+    lease-renewal-interval-in-seconds: 3
+    lease-expiration-duration-in-seconds: 10
+
+mybatis:
+  type-aliases-package: com.ugo.item.pojo
