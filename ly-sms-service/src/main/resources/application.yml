@@ -12,7 +12,7 @@ spring:
 
 ly:
   sms:
-    accessKeyId: LTAIQ3u9clgBEgqz # 你自己的accessKeyId
-    accessKeySecret: vVh9t0C7MinrUz730Ju3Ub3PX3JSKU # 你自己的AccessKeySecret
-    signName: iu商城 # 签名名称
-    verifyCodeTemplate: SMS_163057336 # 模板名称
+    accessKeyId: qqAIQ3u9clgBEgqz # 你自己的accessKeyId
+    accessKeySecret: cch9t0C7MinrUz730Ju3Ub3PX3JSKU # 你自己的AccessKeySecret
+    signName: qq商城 # 签名名称
+    verifyCodeTemplate: SMS_1630573cc # 模板名称
